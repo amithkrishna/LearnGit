@@ -1,0 +1,446 @@
+import React, { useState } from "react";
+import { Table, Input, Popconfirm, Button, Breadcrumb } from "antd";
+
+const EditableCell = ({ editable, value, onChange }) => (
+  <div>
+    {editable ? (
+      <Input
+        style={{ margin: "-5px 0" }}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    ) : (
+      value
+    )}
+  </div>
+);
+
+const EditableTable = () => {
+  const [data, setData] = useState([
+    {
+      key: "1",
+      timestamp: "2023-12-07T12:49:13.48Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails: "https://chargeint.iqmetrix.net:443/v1/originate/single ",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS-SG",
+    },
+    {
+      key: "2",
+      timestamp: "2023-12-07T12:49:13.338Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails: "https://accountsint.iqmetrix.net:443/v1/oauth2/token",
+      featureStep: "createBilling/createBilling",
+      Service: "API_AuthToken",
+      Component: "STREAMS",
+    },
+    {
+      key: "3",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "4",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "5",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "6",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "7",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "8",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "9",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "10",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "11",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "12",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "13",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "14",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "15",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "16",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "17",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "18",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "19",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "20",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "21",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "22",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "23",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+    {
+      key: "24",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "STREAMS",
+    },
+    {
+      key: "25",
+      timestamp: "2023-12-07T12:49:13.668Z",
+      message: "Success  ResultedJourneyState  GroovyLogs",
+      apiDetails:
+        "http://localhost:8080/app/6549e71be52a9e00132c3c69/hal/v1/6549e71be52a9e00132c3c69-1927/createBilling/createBilling",
+      featureStep: "createBilling/createBilling",
+      Service: "API_SingleZuoraBilling",
+      Component: "APP-ENGINE",
+    },
+  ]);
+  const [cacheData, setCacheData] = useState([]);
+
+  const renderColumns = (text, record, column) => (
+    <EditableCell
+      editable={record.editable}
+      value={text}
+      onChange={(value) => handleChange(value, record.key, column)}
+    />
+  );
+
+  const handleChange = (value, key, column) => {
+    const newData = [...data];
+    const target = newData.find((item) => key === item.key);
+
+    if (target) {
+      target[column] = value;
+      setData(newData);
+    }
+  };
+
+  const edit = (key) => {
+    const newData = [...data];
+    const target = newData.find((item) => key === item.key);
+
+    if (target) {
+      target.editable = true;
+      setData(newData);
+    }
+  };
+
+  const save = (key) => {
+    const newData = [...data];
+    const target = newData.find((item) => key === item.key);
+
+    if (target) {
+      delete target.editable;
+      setData(newData);
+      setCacheData(newData.map((item) => ({ ...item })));
+    }
+  };
+
+  const cancel = (key) => {
+    const newData = [...data];
+    const target = newData.find((item) => key === item.key);
+
+    if (target) {
+      Object.assign(
+        target,
+        cacheData.find((item) => key === item.key)
+      );
+      delete target.editable;
+      setData(newData);
+    }
+  };
+  const deleteRow = (key) => {
+    const newData = data.filter((item) => key !== item.key);
+    setData(newData);
+  };
+
+  const columns = [
+    {
+      title: "Timestamp",
+      dataIndex: "timestamp",
+      width: "25%",
+      render: (text, record) => renderColumns(text, record, "timestamp"),
+    },
+    {
+      title: "Message",
+      dataIndex: "message",
+      width: "15%",
+      render: (text, record) => renderColumns(text, record, "message"),
+    },
+    {
+      title: "ApiDetails",
+      dataIndex: "apiDetails",
+      width: "40%",
+      render: (text, record) => renderColumns(text, record, "apiDetails"),
+    },
+    {
+      title: "Feature/Step",
+      dataIndex: "featureStep",
+      width: "40%",
+      render: (text, record) => renderColumns(text, record, "featureStep"),
+    },
+    {
+      title: "Service ",
+      dataIndex: "Service",
+      width: "40%",
+      render: (text, record) => renderColumns(text, record, "Service"),
+    },
+    {
+      title: "Component ",
+      dataIndex: "Component",
+      width: "40%",
+      render: (text, record) => renderColumns(text, record, "Component"),
+    },
+    {
+      title: "Operation",
+      dataIndex: "operation",
+      render: (_, record) => (
+        <div className="editable-row-operations">
+          {record.editable ? (
+            <span>
+              <Button onClick={() => save(record.key)}>Save</Button>
+              <Popconfirm
+                //title="Sure to cancel?"
+                onConfirm={() => cancel(record.key)}
+              >
+                <Button>Cancel</Button>
+              </Popconfirm>
+            </span>
+          ) : (
+            <>
+              <Button type="primary" onClick={() => edit(record.key)}>
+                Edit
+              </Button>
+              <Popconfirm
+                //title="Sure to delete?"
+                onConfirm={() => deleteRow(record.key)}
+              >
+                <Button danger>Delete</Button>
+              </Popconfirm>
+            </>
+          )}
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {/* Navigation bar links */}
+        {/* Breadcrumb component */}
+        <Breadcrumb>
+          <Breadcrumb.Item>Refresh Page</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Home</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Export Steps as Postman coll</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Download All</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>Repeat Journey till step</Breadcrumb.Item>
+
+          {/* Text Box */}
+          <Breadcrumb.Item>
+            <Input
+              value={"5a6f5290-4beb-4f52-b5be-5b5eab69574a"}
+              style={{ marginLeft: "3px" }}
+            />
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
+
+      <div style={{ margin: "10px" }}></div>
+
+      <Table
+        bordered
+        dataSource={data}
+        columns={columns}
+        components={{
+          header: {
+            cell: (props) => (
+              <th style={{ background: "lightblue", fontWeight: "bold" }}>
+                {props.children}
+              </th>
+            ),
+          },
+        }}
+      />
+    </div>
+  );
+};
+
+export default EditableTable;
